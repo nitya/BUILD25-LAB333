@@ -49,6 +49,7 @@ We recommend using GitHub Codespaces for the fastest start with minimal effort.
     ```bash
     mkdocs serve
     ```
+    
 1. Work through the instructions in GitHub Codespaces.
 
 ## Questions or Comments?
