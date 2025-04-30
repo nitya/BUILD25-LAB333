@@ -24,12 +24,7 @@ This workshop is designed to jumpstart your journey into understanding, and work
 
 1. Fork the repo to your personal GitHub account to get your own copy
 1. Launch GitHub Codespaces and work with a VS Code editor in the browser
-1. Open a VS Code terminal when ready, run command to preview the lab guide
-
-    ```bash
-    mkdocs serve
-    ```
-    
+1. Open a VS Code terminal when ready, run ```mkdocs serve```
 1. Work through the instructions in GitHub Codespaces.
 
 ## Questions or Comments?
