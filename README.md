@@ -20,27 +20,7 @@ This workshop is designed to jumpstart your journey into understanding, and work
 1. Build intution for usage with low-code and code-first approaches
 1. Gain insights into patterns and practices for practical applications
 
-
-## Pre-Requisites
-
-1. Python 3.10 or higher (runtime)
-1. Azure account (with active subscription and model quota)
-1. GitHub account (with GitHub Codespaces quota)
-1. Familiarity with Python programming & Jupyter notebooks
-1. Familiarity with VS Code editors & commandline usage
-1. Familiarity with Generative AI applications and concepts
-
-## Delivery Formats
-
-This lab is designed for two kinds of audiences:
-
-1. **Instructor-led** · This is for 75-minute in-venue sessions at Microsoft Build. Particpants will use a pre-provisioned Azure subscription · Bring your own laptop.
-1. **Self-guided** - This is for self-guided learners · Bring your own Azure subscription and laptop · Work at your own pace.
-
-
-## Quickstart
-
-We recommend using GitHub Codespaces for the fastest start with minimal effort.
+## Quickstart 
 
 1. Fork the repo to your personal GitHub account to get your own copy
 1. Launch GitHub Codespaces and work with a VS Code editor in the browser
