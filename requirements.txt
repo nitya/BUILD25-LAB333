@@ -1,20 +1,9 @@
 # Website
 mkdocs-material
 
-# Python
-python-dotenv
-
 # OpenAI Reasoning
 openai==1.56.1
-pandas==2.2.3
 ipython==8.13.2
 python-dotenv==1.0.1
-termcolor==2.5.0
-tiktoken==0.8.0
-httpx==0.27.2
 
-# Azure OpenAI
-azure-ai-inference
-azure-identity
-aiohttp
 
