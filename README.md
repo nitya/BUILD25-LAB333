@@ -29,4 +29,8 @@ This workshop is designed to jumpstart your journey into understanding, and work
 
 ## Questions or Comments?
 
-We welcome feedback to help us improve the learning experience. Just [file an issue](https://github.com/microsoft/BUILD25-LAB333/issues/new) to report bugs, suggest enhancements, or ask for clarifications.
+We welcome feedback to help us improve the learning experience. 
+
+1. [File an issue](https://github.com/microsoft/BUILD25-LAB333/issues/new). We welcome feedback on ways to improve the workshop for future learners.
+1. [Join the Azure AI Foundry Discord](https://aka.ms/azureaifoundry/discord). Meet Azure AI community members and share insights.
+1. [Visit the Azure AI Foundry Developer Forum](https://aka.ms/azureaifoundry/forum). Get the latest updates on Azure AI Foundry.

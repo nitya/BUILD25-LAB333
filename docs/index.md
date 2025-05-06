@@ -56,5 +56,5 @@ This workshop is designed to be a living resource to continue your learning jour
 ## Questions or Comments?
 
 1. [File an issue](https://github.com/microsoft/BUILD25-LAB333/issues/new). We welcome feedback on ways to improve the workshop for future learners.
-1. [Join the Azure AI Foundry Discord](https://aka.ms/model-mondays/discord). Meet Azure AI community members and share insights.
-1. [Visit the Azure AI Foundry Developer Forum](https://github.com/orgs/azure-ai-foundry/discussions/1). Get the latest updates on Azure AI Foundry.
+1. [Join the Azure AI Foundry Discord](https://aka.ms/azureaifoundry/discord). Meet Azure AI community members and share insights.
+1. [Visit the Azure AI Foundry Developer Forum](https://aka.ms/azureaifoundry/forum). Get the latest updates on Azure AI Foundry.
