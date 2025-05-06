@@ -5,6 +5,37 @@ description: Apply reasoning models to build a sophisticated catering planning s
 
 # Building a Reasoning Application
 
+!!! info "THIS IS NOT A LAB EXERCISE - IT IS A THOUGHT EXERCISE TO INSPIRE YOU"
+
+    This section is not meant to completed in-venue. 
+    
+    It is meant for you to read and think about, in how reasoning models can be used to build more effective applications. **This entire track was created by a reasoning model** using the prompt below. The code or content has **not been tested or validated** but is shown exactly as generated, to give you a sense of how these models can be used **to plan your next application**
+
+    ```title="" linenums="0"
+
+    Build a Reasoning Model Application - apply prompt engineering best practices to a complex scenario. In this section, we want to build a complex catering application that, given a set of recipes, and a set of catering orders, will generate a catering plan that covers ingredient purchase, recipe adjustments (for servings), and timing requirements.
+    Talk about how we can use the reasoning models to help us with this task.
+    - Explain metaprompting 
+    - Explain orchestration (where reasoning model plans and gpt model executes)
+
+    ```
+
+!!! quote "THINK ABOUT THIS AS YOU READ"
+
+    **Look at the content generated in this track**
+
+    - How coherent is the writing?
+    - How comprehensive is the planning?
+    - How accurate are the explanations?
+    - How runnable is the code?
+    - How can using this as a starting point help productivity?
+    - What aspects of app development _are good targets for reasoning?_
+
+!!! success "Find the idea interesting? **Star the repo and watch for updates with more labs to build on this**"
+
+---
+
+
 This section applies everything you've learned to build a practical application that leverages reasoning models. You'll develop a catering planning system that demonstrates how to effectively use reasoning capabilities to solve complex planning and optimization problems.
 
 ## Learning Objectives

@@ -8,27 +8,56 @@
 
 ---
 
-## 1. View Azure Resources
+## 1. Log into Azure Portal
 
-**The Azure Portal** is the web-based interface for managing Azure resources. It provides a unified view of all your Azure resources, including those provisioned by Azure AI Foundry. Let's verify that the resource group was provisioned correctly.
+**The Azure Portal** is the web-based interface for managing Azure resources. It provides a unified view of all your Azure resources, including those provisioned by Azure AI Foundry. 
 
+To log into the Azure portal, you will need an Azure subscription. **Pick a tab below**.
 
-1. Visit [this Azure Portal link](https://portal.azure.com/#browse/resourcegroups) in a new browser tab.
-    - You should the `rg-lab-reasoning` resource group listed. Click the link.
-    - You should see something like this
+=== "In-Venue Attendees"
 
-        ![Azure Portal](../assets/00-setup-azure-portal.png)
+    You will be using the Azure subscription provided by the Skillable lab environment.
+
+    1. Visit [this Azure Portal link](https://portal.azure.com/#browse/resourcegroups) in a new browser tab.   
+    1. You will be prompted to log in.
+    1. Switch to the browser tab with the Skillable VM
+        - Look for the Azure Credentials in the instructions pane
+        - Copy the `Username`. Switch to the Azure Portal tab and paste it.
+        - Switch to Skillable tab. Copy the `Password` for the credential.
+        - Switch to Azure Portal tab. Paste it and complete auth flow. 
+
+=== "At-Home Attendees"
+
+    You will be using your own Azure subscription.
+
+    1. Visit [this Azure Portal link](https://portal.azure.com/#browse/resourcegroups) in a new browser tab.
+    1. You will be prompted to log in.
+    1. Enter your own Azure subscription credentials (username, password)
+    1. Complete the auth flow.
+
+!!! success "Congratulations: You are logged into the Azure Portal"
+
+---
+
+## 2. Check Azure Resources
+
+Let's verify that the resource group was provisioned correctly. By default, the link about should take you to a page listing all resource groups.
+
+1. You should the lab resource group listed (Lab333)
+1. Click to view its details page - it should look similar to this:
+
+    ![Azure Portal](../assets/00-setup-azure-portal.png)
 
 1. Check that you have these resources provisioned
     - [X] Azure AI hub resource 
-    - [X] Azure AI project resource t
+    - [X] Azure AI project resource
     - [X] Azure AI services resource
     - [X] Key vault
     - [X] Storage account
 
 ---
 
-## 2. View Azure AI Project
+## 3. View Azure AI Project
 
 The **Azure AI Foundry portal** is a specialized interface for working with Azure AI Foundry projects. It provides a UI-based (low-code) way to interact with your Azure AI applications. 
 
@@ -49,7 +78,7 @@ The **Azure AI Foundry portal** is a specialized interface for working with Azur
 
 ---
 
-## 3. View Model Deployments
+## 4. View Model Deployments
 
 **AI Models are the core engines of your Azure AI Foundry project**. Let's verify that all required models were provisioned correctly.
 
@@ -85,7 +114,7 @@ You can explore the model catalog, assess models with benchmarks, and deploy a s
 
 ---
 
-## 4. Explore The Playground
+## 5. Explore The Playground
 
 The **Model Playground** is a low-code interface for exploring and testing models. Quickly prototype ideas, test prompts, and evaluate model performance - all without writing code.
 
@@ -102,7 +131,12 @@ The **Model Playground** is a low-code interface for exploring and testing model
 1. We have 2 reasoning models and 1 general-purpose model available for testing.
 
     - Let's explore the `gpt-4o-mini` model (we'll use reasoning models later)
-    - Select a default prompt - e.g., I selected the **Poetry generation** option
+    - Select a default prompt - e.g., I selected the **Poetry generation** prompt
+
+        ```title="" linenums="0"
+        Compose a poem about the beauty of nature in autumn
+        ```
+
     - Click the arrow - note the response and the token usage (below the prompt box)
     - Expand the **Parameters** section - vary settings to assess response quality
 
@@ -119,7 +153,7 @@ The **Model Playground** is a low-code interface for exploring and testing model
 
 ---
 
-## 5. Configure Local Environment
+## 6. Configure Local Environment
 
 Ideation is good for assessing models for your project. But once you've made a decision, you need to move to a code-first approach for development. Let's set ourselves up now so we can explore code-first development later.
 
@@ -136,7 +170,9 @@ Ideation is good for assessing models for your project. But once you've made a d
 1. Copy over the values from that page, to update the `.env` file
 
     - `AZURE_OPENAI_KEY` - set the value from the `API Key` panel
-    - `AZURE_OPENAI_ENDPOINT` - set the value from the `Endpoint` panel
+    - `AZURE_OPENAI_ENDPOINT` - set the value from the `Azure OpenAI Service` capability
+
+    !!! note "The endpoint should be in the form "https://XXXX.openai.azure.com/""
 
 **You are now ready to start exploring reasoning models from both playground and code**
 
