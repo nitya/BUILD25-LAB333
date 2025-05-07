@@ -1,5 +1,8 @@
-# LAB333: Evaluate Reasoning Models for Your Generative AI Solutions
+<p align="center">
+<img src="img/banner.jpg" alt="decorative banner" width="1200"/>
+</p>
 
+# LAB333: Evaluate Reasoning Models for Your Generative AI Solutions
 
 > [!IMPORTANT]  
 > This repository contains training materials for a hands-on workshop on Reasoning models. It provides an overview of reasoning models (what they are, how they work, when to use them) and illustrates tradeoffs and best practices for usage with examples.
@@ -34,3 +37,10 @@ We welcome feedback to help us improve the learning experience.
 1. [File an issue](https://github.com/microsoft/BUILD25-LAB333/issues/new). We welcome feedback on ways to improve the workshop for future learners.
 1. [Join the Azure AI Foundry Discord](https://aka.ms/azureaifoundry/discord). Meet Azure AI community members and share insights.
 1. [Visit the Azure AI Foundry Developer Forum](https://aka.ms/azureaifoundry/forum). Get the latest updates on Azure AI Foundry.
+
+## Session Resources 
+
+| Resources          | Links                             | Description        |
+|:-------------------|:----------------------------------|:-------------------|
+| Build session page | https://build.microsoft.com/sessions/LAB333 | Event session page with downloadable recording, slides, resources, and speaker bio |
+| Session recording on YouTube | https://aka.ms/build2025/video/LAB333 | YouTube page with session recoding and speaker-moderated chat |
