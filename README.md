@@ -43,4 +43,3 @@ We welcome feedback to help us improve the learning experience.
 | Resources          | Links                             | Description        |
 |:-------------------|:----------------------------------|:-------------------|
 | Build session page | https://build.microsoft.com/sessions/LAB333 | Event session page with downloadable recording, slides, resources, and speaker bio |
-| Session recording on YouTube | https://aka.ms/build2025/video/LAB333 | YouTube page with session recoding and speaker-moderated chat |
