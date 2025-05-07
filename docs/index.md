@@ -23,7 +23,7 @@ This workshop is designed to jumpstart your journey into understanding, and work
 
 1. GitHub Account - you can [signup](https://github.com/signup) for free.
 1. Azure Account - you can [signup](https://github.com/signup) for free.
-1. Familiarity with Python programming & Ju[yter notebooks
+1. Familiarity with Python programming & Jupyter notebooks
 1. Familiarity with VS Code editors & commandline usage
 1. Familiarity with Generative AI applications and concepts
 
