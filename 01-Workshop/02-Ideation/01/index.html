@@ -1,0 +1,1909 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Try this prompt - and continue exploring it.">
+      
+      
+        <meta name="author" content="Nitya Narasimhan">
+      
+      
+        <link rel="canonical" href="https://microsoft.github.io/Build25-Lab333/01-Workshop/02-Ideation/01/">
+      
+      
+        <link rel="prev" href="../../01-Introduction/03/">
+      
+      
+        <link rel="next" href="../02/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>Lab 5 · Prompt Engineering - MSBuild 2025 - Lab 333</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#prompting-principles" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="MSBuild 2025 - Lab 333" class="md-header__button md-logo" aria-label="MSBuild 2025 - Lab 333" data-md-component="logo">
+      
+  <img src="../../../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MSBuild 2025 - Lab 333
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lab 5 · Prompt Engineering
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/microsoft/Build25-lab333" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/Build25-lab333
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Welcome
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../00-Setup/00-self-guided/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  01 Workshop
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../02-Homework/Implementation/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  02 Homework
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="MSBuild 2025 - Lab 333" class="md-nav__button md-logo" aria-label="MSBuild 2025 - Lab 333" data-md-component="logo">
+      
+  <img src="../../../assets/logo.svg" alt="logo">
+
+    </a>
+    MSBuild 2025 - Lab 333
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/microsoft/Build25-lab333" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/Build25-lab333
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Welcome
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    01 Workshop
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            01 Workshop
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    00 Setup
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            00 Setup
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-Setup/00-self-guided/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 1: Setup AI Project
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-Setup/01-explore-project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 2: Validate Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    01 Introduction
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            01 Introduction
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-Introduction/01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Reasoning Models
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-Introduction/02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 3: Compare Models
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-Introduction/03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 4: Manage Tokens
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    02 Ideation
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            02 Ideation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Lab 5 · Prompt Engineering
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 5 · Prompt Engineering
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prompting-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prompting Principles
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-case-math-tutor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use Case: Math Tutor
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-set-clear-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Set Clear Context
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-set-model-a-task" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Set Model a Task
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Set Model a Task">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-iterate-copy-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 Iterate: Copy Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-accuracy-vs-cost" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 Accuracy vs Cost
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-homework-try-this" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Homework: Try this
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Homework: Try this">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-few-shot-thinking" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 Few Shot Thinking
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-use-delimiters" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 Use Delimiters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-state-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 State Constraints
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 6 · Visual Reasoning
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    03 Inference
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            03 Inference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-Inference/01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 7 · Code-First Prompting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-Inference/02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 8 · Advanced Usage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-Inference/03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Continue Learning
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    02 Homework
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            02 Homework
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../02-Homework/Implementation/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Implementation
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Implementation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02-Homework/Implementation/01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Application Patterns
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02-Homework/Implementation/02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 9 · Metaprompting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02-Homework/Implementation/03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 10 · Model Chaining
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../02-Homework/References/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    References
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            References
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prompting-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prompting Principles
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-case-math-tutor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use Case: Math Tutor
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-set-clear-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Set Clear Context
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-set-model-a-task" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Set Model a Task
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Set Model a Task">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-iterate-copy-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 Iterate: Copy Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-accuracy-vs-cost" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 Accuracy vs Cost
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-homework-try-this" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Homework: Try this
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Homework: Try this">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-few-shot-thinking" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 Few Shot Thinking
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-use-delimiters" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 Use Delimiters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-state-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 State Constraints
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+  <h1>Lab 5 · Prompt Engineering</h1>
+
+<div class="admonition quote">
+<p class="admonition-title">BY THE END OF THIS SECTION YOU SHOULD KNOW</p>
+<ol>
+<li>How prompt engineering for reasoning models differs from the normal guidance</li>
+<li>How to track tradeoffs in both response quality and model performance</li>
+<li>Why token management is critical, and the levers available to influence it </li>
+<li>How to use a trial and error approach to find the right token management strategy</li>
+</ol>
+</div>
+<div class="admonition info">
+<p class="admonition-title">REMINDER: These models are stochastic. Your response may not match the sample exactly</p>
+</div>
+<h2 id="prompting-principles">Prompting Principles<a class="headerlink" href="#prompting-principles" title="Permanent link">&para;</a></h2>
+<p>First, let's review <a href="https://platform.openai.com/docs/guides/reasoning-best-practices#how-to-prompt-reasoning-models-effectively">recommended prompting practices</a> for these models.</p>
+<ol>
+<li>Use developer messages to set context.</li>
+<li>Keep prompts clear and direct.</li>
+<li>Avoid chain-of-thought; models reason internally.</li>
+<li>Use delimiters to separate sections.</li>
+<li>Try zero-shot first; add examples only if needed.</li>
+<li>Clearly state any output constraints.</li>
+<li>Be precise about goals and success criteria.</li>
+<li>Include “Formatting re-enabled” to request markdown output.</li>
+</ol>
+<p>Over the rest of this workshop, we'll follow a basic practice.</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>- Describe a use case or scenario
+- Start with a simple (and potentially messy) prompt. 
+- Think about applying at least one prompting principle to refine it.
+- Assess the impact in terms of quality, token costs and latency.
+</code></pre></div></td></tr></table></div>
+<p><strong>This will help you gradually build up intuition for when to apply each principle effectively</strong>.</p>
+<hr />
+<h2 id="use-case-math-tutor">Use Case: Math Tutor<a class="headerlink" href="#use-case-math-tutor" title="Permanent link">&para;</a></h2>
+<p>First, let's define a scenario. We know the reasoning models are good at math and logic, and the o-series models are notably good at competitive math challenges like AIME. Let's use that.</p>
+<div class="admonition info">
+<p class="admonition-title">Scenario: I am a Math tutor trying to help USA Computing Olympiad students</p>
+<ol>
+<li>Here's an example of a <a href="https://usaco.org/index.php?page=viewproblem2&amp;cpid=783">USA Computing Olympiad</a> math problem that requires reasoning. There are hundreds of these problems <a href="https://usaco.guide/problems/">available to prospective students</a> - allowing them to sharpen their skills.</li>
+<li>I have this in a <a href="../assets/USACO.pdf">PDF</a> format. I want it to extract the problem statement and solve it, and then write up an explanation for me of that solution.</li>
+<li>Then I want it to think of a better way to explain this visually by writing code that could generate a diagram or image that helps whiteboard this for visual learners.</li>
+</ol>
+</div>
+<h2 id="1-set-clear-context">1. Set Clear Context<a class="headerlink" href="#1-set-clear-context" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>You are a math tutor.</p>
+<p>You are helping a student prepare for the USA Computing Olympiad. You will extract the problem statement from the PDF and solve it. Then you will write up an explanation of the solution. Finally, you will think of a better way to explain this visually by writing code that could generate a diagram or image that helps whiteboard this for visual learners.</p>
+</blockquote>
+<ol>
+<li>Describe your role or persona</li>
+<li>Describe the model's primary goal</li>
+<li>Provide it any clarifying instructions</li>
+</ol>
+<h2 id="2-set-model-a-task">2. Set Model a Task<a class="headerlink" href="#2-set-model-a-task" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Upload the PDF to the Playground</li>
+<li>Enter the prompt: <code>Here's the PDF</code></li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">RESPONSE: Model responds with a message saying it cannot read the PDF (via Playground)</p>
+</div>
+<h3 id="21-iterate-copy-data">2.1 Iterate: Copy Data<a class="headerlink" href="#21-iterate-copy-data" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Copy the problem directly into the prompt: </li>
+<li>Note: this uses model context window</li>
+<li><strong>What do you observe?</strong></li>
+</ul>
+<details class="info">
+<summary>Click to expand for the full prompt (to copy)</summary>
+<div class="highlight"><pre><span></span><code>Bessie the cow used to have such a nice view from her barn, looking across road at a set of two billboards advertising delicious looking cow feed. Unfortunately, one of these billboards has recently been updated so it now advertises &quot;Farmer Larry&#39;s Lawnmowers&quot;. Bessie is not a fan of lawnmowers since their only purpose, as far as she can tell, is cutting back the grass in her field that she finds so tasty (if you haven&#39;t noticed, much of Bessie&#39;s thought process revolves around food).
+
+Fortunately, the remaining cow feed billboard is situated in front of the lawnmower billboard, potentially obscuring it.
+
+Bessie, determined to remove the offensive lawnmower billboard completely from her view, hatches a risky plan. She plans to steal a large rectangular tarp from the barn and sneak out late at night to cover the remaining portion of the lawnmower billboard, so that she can no longer see any part of it.
+
+Given the locations of the two billboards, please help Bessie compute the minimum area of the tarp she will need. Since the only tarps available in the barn are rectangular in size, Bessie observes that she may conceivably need a tarp whose area is slightly larger than the exposed area of the lawnmower billboard, as illustrated in the example below. The tarp may only be placed such that its sides are parallel to those of the other billboards (i.e., it cannot be &quot;tilted&quot;).
+
+INPUT FORMAT (file billboard.in):
+The first line of input contains four space-separated integers: x1
+y1
+x2
+y2
+, where (x1,y1)
+and (x2,y2)
+are the coordinates of the lower-left and upper-right corners of the lawnmower billboard in Bessie&#39;s 2D field of view. The next line contains four more integers, similarly specifying the lower-left and upper-right corners of the cow feed billboard. The cow feed billboard may obscure all, some, or none of the lawnmower billboard. All coordinates are in the range -1000 to +1000.
+OUTPUT FORMAT (file billboard.out):
+Please output the minimum area of the tarp Bessie needs to use to cover part of the lawnmower billboard so that it becomes completely obscured.
+SAMPLE INPUT:
+2 1 7 4
+5 -1 10 3
+SAMPLE OUTPUT:
+15
+Here, the cow feed billboard obscures the lower right corner of the lawnmower billboard, but this doesn&#39;t really help, since Bessie still needs to use a tarp whose size is as large as the entire lawnmower billboard.
+
+Problem credits: Brian Dean
+</code></pre></div>
+</details>
+<h3 id="22-accuracy-vs-cost">2.2 Accuracy vs Cost<a class="headerlink" href="#22-accuracy-vs-cost" title="Permanent link">&para;</a></h3>
+<ol>
+<li>You may see a response like this.</li>
+<li><strong>Note the Cost in tokens</strong> e.g., <code>2477</code> tokens</li>
+<li><strong>Did the response meet your request?</strong> e.g., is it visual?</li>
+<li><strong>Can you improve this?</strong> e.g., get it to draw the picture?</li>
+</ol>
+<details>
+<summary>Click to expand for a sample response</summary>
+<p>Below is the full problem statement, a worked‐out solution, and finally a small Python script (using matplotlib) you can use to generate a diagram illustrating any test case.</p>
+<p>————————————
+  Problem (“Blocked Billboard”)
+  ————————————
+  Bessie the cow used to have such a nice view from her barn, looking across the road at two billboards advertising delicious cow feed. One of these billboards has recently been updated and now advertises “Farmer Larry’s Lawnmowers.” Bessie dislikes lawnmowers and would like to completely obscure the offending lawnmower billboard from her view by placing one large rectangular tarp over whatever portion of it is still visible (the other billboard may already cover part of it).</p>
+<p>You are given the coordinates of the lower‐left and upper‐right corners of:</p>
+<p>the lawnmower billboard
+  the cow‐feed billboard
+  All rectangles are axis‐aligned. Compute the minimum area of a single axis‐aligned rectangular tarp that will cover all of the still‐visible portion of the lawnmower billboard. If the feed billboard already completely covers the lawnmower one, answer 0. If there is no overlap, you must cover the entire lawnmower billboard.</p>
+<p>Input (billboard.in)
+  Line 1: x1 y1 x2 y2 — lawnmower billboard corners
+  Line 2: x3 y3 x4 y4 — feed billboard corners
+  (–1000 ≤ all coords ≤ +1000)</p>
+<p>Output (billboard.out)
+  A single integer: the minimum tarp area needed.</p>
+<p>Sample Input
+  2 1 7 4
+  5 –1 10 3</p>
+<p>Sample Output
+  15</p>
+<p>Explanation of the sample:</p>
+<p>Lawn mower billboard spans (2,1) to (7,4) → area = 5×3 = 15.
+  Feed billboard spans (5,–1) to (10,3), which overlaps the lower right corner of the mower but does not cover it fully in either dimension.
+  The remaining visible portions of the mower are in two disconnected pieces, so any single rectangle that contains both must be as large as the entire mower (area 15).</p>
+<p>————————————
+  Solution Outline
+  ————————————
+  Let
+  mower = [X1,Y1]×[X2,Y2],
+  feed = [A1,B1]×[A2,B2].
+  Compute mower width and height:
+  W = X2 – X1
+  H = Y2 – Y1
+  Full mower area = W × H.</p>
+<p>Compute overlap dimensions:
+  overlap_width = max(0, min(X2,A2) – max(X1,A1))
+  overlap_height = max(0, min(Y2,B2) – max(Y1,B1))
+  If overlap_width == 0 or overlap_height == 0, there is no intersection → tarp must cover whole mower → answer = W×H.</p>
+<p>If the feed fully covers the mower:
+  A1 ≤ X1, A2 ≥ X2, B1 ≤ Y1, and B2 ≥ Y2
+  → answer = 0.</p>
+<p>Otherwise there is a partial overlap. The only time you can cover the remaining visible piece with less area than the full mower is when the feed “clips” off exactly one side (top, bottom, left, or right), leaving one contiguous rectangle. Concretely:
+  • If feed’s x‐interval covers mower’s full width (A1 ≤ X1 and A2 ≥ X2), then feed is a horizontal strip.
+  – If it touches the bottom of the mower (B1 ≤ Y1 &lt; B2 &lt; Y2), it clips off the bottom → one piece remains at top of height Y2–B2, so tarp area = W × (Y2–B2).
+  – If it touches the top of the mower (Y1 &lt; B1 &lt; Y2 ≤ B2), it clips off the top → one piece remains at bottom of height B1–Y1, so tarp area = W × (B1–Y1).</p>
+<p>• Else if feed’s y‐interval covers mower’s full height (B1 ≤ Y1 and B2 ≥ Y2), then feed is a vertical strip.
+  – If it touches the left side (A1 ≤ X1 &lt; A2 &lt; X2), tarp area = H × (X2–A2).
+  – If it touches the right side (X1 &lt; A1 &lt; X2 ≤ A2), tarp area = H × (A1–X1).</p>
+<p>Otherwise the feed sits “in the middle” of the mower leaving two or more disconnected pieces → the minimal enclosing rectangle is the entire mower → area = W×H.</p>
+<p>Putting it all together, compute these cases and take the minimum area you find.</p>
+<p>————————————
+  Sample Implementation (C++‐style pseudocode)
+  ————————————</p>
+<p>read X1,Y1,X2,Y2<br />
+  read A1,B1,A2,B2  </p>
+<p>W = X2 - X1<br />
+  H = Y2 - Y1<br />
+  fullArea = W * H  </p>
+<p>// compute overlap<br />
+  ovW = max(0, min(X2,A2) - max(X1,A1))<br />
+  ovH = max(0, min(Y2,B2) - max(Y1,B1))  </p>
+<p>// no intersection<br />
+  if (ovW == 0 or ovH == 0) <br />
+  print fullArea and exit  </p>
+<p>// feed covers mower completely<br />
+  if (A1 &lt;= X1 and A2 &gt;= X2 and B1 &lt;= Y1 and B2 &gt;= Y2) <br />
+  print 0 and exit  </p>
+<p>ans = fullArea  </p>
+<p>// horizontal strip case<br />
+  if (A1 &lt;= X1 and A2 &gt;= X2) {<br />
+  // bottom strip<br />
+  if (B1 &lt;= Y1 and B2 &lt; Y2) <br />
+     ans = min(ans, W * (Y2 - B2))<br />
+  // top strip<br />
+  if (B2 &gt;= Y2 and B1 &gt; Y1) <br />
+     ans = min(ans, W * (B1 - Y1))<br />
+  }  </p>
+<p>// vertical strip case<br />
+  if (B1 &lt;= Y1 and B2 &gt;= Y2) {<br />
+  // left strip<br />
+  if (A1 &lt;= X1 and A2 &lt; X2)  <br />
+     ans = min(ans, H * (X2 - A2))<br />
+  // right strip<br />
+  if (A2 &gt;= X2 and A1 &gt; X1)  <br />
+     ans = min(ans, H * (A1 - X1))<br />
+  }  </p>
+<p>print ans  </p>
+<p>Time complexity is O(1) and uses only a few comparisons and arithmetic operations.</p>
+<p>————————————
+  Visual Aid Generator (Python + matplotlib)
+  ————————————
+  Here is a little script you can run to draw any test case. It plots the mower in red outline, the feed in semi‐transparent blue, and shades in green the smallest tarp you’d need.</p>
+<p>import matplotlib.pyplot as plt<br />
+  import matplotlib.patches as patches  </p>
+<p>def draw_case(mower, feed):<br />
+     """<br />
+     mower and feed are tuples (x1,y1,x2,y2).<br />
+     Draws the mower (red outline), feed (blue fill), and<br />
+     minimal tarp (green fill).<br />
+     """<br />
+     x1,y1,x2,y2 = mower<br />
+     a1,b1,a2,b2 = feed  </p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span></pre></div></td><td class="code"><div><pre><span></span><code> fig, ax = plt.subplots()  
+ ax.set_aspect(&#39;equal&#39;)
+
+ # Draw mower billboard (red outline)  
+ mower_rec = patches.Rectangle((x1, y1), x2-x1, y2-y1,  
+                               edgecolor=&#39;red&#39;, facecolor=&#39;none&#39;, lw=2)  
+ ax.add_patch(mower_rec)
+
+ # Draw feed billboard (blue translucent)  
+ feed_rec = patches.Rectangle((a1, b1), a2-a1, b2-b1,  
+                               edgecolor=&#39;blue&#39;, facecolor=&#39;blue&#39;, alpha=0.3)  
+ ax.add_patch(feed_rec)
+
+ # Compute tarp rectangle  
+ # First apply the same logic as solution to find its coords  
+ ovw = max(0, min(x2,a2) - max(x1,a1))  
+ ovh = max(0, min(y2,b2) - max(y1,b1))  
+ # By default tarp covers entire mower  
+ tx1, ty1, tx2, ty2 = x1, y1, x2, y2
+
+ # no overlap -&gt; tarp = mower  
+ if ovw &gt; 0 and ovh &gt; 0:  
+    # fully covered?  
+    if not (a1 &lt;= x1 and a2 &gt;= x2 and b1 &lt;= y1 and b2 &gt;= y2):  
+          # check horizontal strip  
+          if a1 &lt;= x1 and a2 &gt;= x2:  
+             if b1 &lt;= y1 and b2 &lt; y2:  
+                ty1 = b2  
+             elif b2 &gt;= y2 and b1 &gt; y1:  
+                ty2 = b1  
+          # check vertical strip  
+          if b1 &lt;= y1 and b2 &gt;= y2:  
+             if a1 &lt;= x1 and a2 &lt; x2:  
+                tx1 = a2  
+             elif a2 &gt;= x2 and a1 &gt; x1:  
+                tx2 = a1
+
+ # Draw tarp (green translucent)  
+ tarp_rec = patches.Rectangle((tx1, ty1), tx2-tx1, ty2-ty1,  
+                               edgecolor=&#39;green&#39;, facecolor=&#39;green&#39;, alpha=0.3)  
+ ax.add_patch(tarp_rec)
+
+ # set plot limits a bit beyond the union of rectangles  
+ margin = 1  
+ min_x = min(x1, a1) - margin  
+ max_x = max(x2, a2) + margin  
+ min_y = min(y1, b1) - margin  
+ max_y = max(y2, b2) + margin  
+ ax.set_xlim(min_x, max_x)  
+ ax.set_ylim(min_y, max_y)
+
+ plt.xlabel(&#39;X&#39;)  
+ plt.ylabel(&#39;Y&#39;)  
+ plt.title(&#39;Red = LawnMower, Blue = Feed, Green = Tarp&#39;)  
+ plt.grid(True)  
+ plt.show()
+</code></pre></div></td></tr></table></div>
+<p># Example usage:<br />
+  if <strong>name</strong> == '<strong>main</strong>':<br />
+     # Sample from problem statement<br />
+     mower = (2,1,7,4)<br />
+     feed  = (5,-1,10,3)<br />
+     draw_case(mower, feed)  </p>
+<p>How to use the script:
+  • Change the mower and feed tuples to any coordinates you like.
+  • Run python visualize.py (assuming you save it that name).
+  • You’ll see a plot showing how the feed covers the mower and exactly what tarp you need.</p>
+<p>This visual should make it crystal‐clear in each case why the tarp can sometimes be smaller (a single clipped side), or otherwise must cover the full lawnmower billboard.</p>
+</details>
+<h2 id="3-homework-try-this">3. Homework: Try this<a class="headerlink" href="#3-homework-try-this" title="Permanent link">&para;</a></h2>
+<div class="admonition quote">
+<p class="admonition-title">EXPLORE AT HOME: Iterate and build intuition for yourself.</p>
+</div>
+<h3 id="31-few-shot-thinking">3.1 Few Shot Thinking<a class="headerlink" href="#31-few-shot-thinking" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Above prompts were zero-shot in guiding code choices</li>
+<li>Try rewriting the prompt by suggest Python plotly to visualize it</li>
+<li><strong>How does this impact response quality and cost?</strong></li>
+</ul>
+<h3 id="32-use-delimiters">3.2 Use Delimiters<a class="headerlink" href="#32-use-delimiters" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Use xml tags to separate word problem, data and suggestions</li>
+<li>Use tag names that clearly reflect context or provide added insight</li>
+<li><strong>How does this impact response quality and cost?</strong></li>
+</ul>
+<h3 id="33-state-constraints">3.3 State Constraints<a class="headerlink" href="#33-state-constraints" title="Permanent link">&para;</a></h3>
+<ul>
+<li>The response is verbose - ask it to use bullet points</li>
+<li>Specify languages for USACO - C++, Java and Python</li>
+<li>Specify desired output format - display plot on console</li>
+<li><strong>How does this impact response quality and cost?</strong></li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../01-Introduction/03/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Lab 4: Manage Tokens">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Lab 4: Manage Tokens
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../02/" class="md-footer__link md-footer__link--next" aria-label="Next: Lab 6 · Visual Reasoning">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Lab 6 · Visual Reasoning
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2025 Microsoft &nbsp;|&nbsp; <a href="https://go.microsoft.com/fwlink/?LinkId=521839">Privacy </a>&nbsp;|&nbsp; <a href="https://go.microsoft.com/fwlink/?LinkId=2259814">Consumer Health Privacy </a>&nbsp;|&nbsp; <a onclick="window.manageConsent();">Cookies </a>&nbsp;|&nbsp; <a href="https://go.microsoft.com/fwlink/?LinkID=206977">Terms of Use </a>&nbsp;|&nbsp; <a href="https://www.microsoft.com/trademarks">Trademarks </a>
+
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.expand", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "toc.follow", "navigation.footer", "content.code.copy", "content.tabs.link"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  </body>
+</html>

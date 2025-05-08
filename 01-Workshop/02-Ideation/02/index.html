@@ -1,0 +1,1718 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Start with a visual reasoning task and explore prompt engineering">
+      
+      
+        <meta name="author" content="Nitya Narasimhan">
+      
+      
+        <link rel="canonical" href="https://microsoft.github.io/Build25-Lab333/01-Workshop/02-Ideation/02/">
+      
+      
+        <link rel="prev" href="../01/">
+      
+      
+        <link rel="next" href="../../03-Inference/01/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>Lab 6 · Visual Reasoning - MSBuild 2025 - Lab 333</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-prompt" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="MSBuild 2025 - Lab 333" class="md-header__button md-logo" aria-label="MSBuild 2025 - Lab 333" data-md-component="logo">
+      
+  <img src="../../../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MSBuild 2025 - Lab 333
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lab 6 · Visual Reasoning
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/microsoft/Build25-lab333" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/Build25-lab333
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Welcome
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../00-Setup/00-self-guided/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  01 Workshop
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../02-Homework/Implementation/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  02 Homework
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="MSBuild 2025 - Lab 333" class="md-nav__button md-logo" aria-label="MSBuild 2025 - Lab 333" data-md-component="logo">
+      
+  <img src="../../../assets/logo.svg" alt="logo">
+
+    </a>
+    MSBuild 2025 - Lab 333
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/microsoft/Build25-lab333" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    microsoft/Build25-lab333
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Welcome
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    01 Workshop
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            01 Workshop
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    00 Setup
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            00 Setup
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-Setup/00-self-guided/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 1: Setup AI Project
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-Setup/01-explore-project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 2: Validate Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    01 Introduction
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            01 Introduction
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-Introduction/01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Reasoning Models
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-Introduction/02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 3: Compare Models
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-Introduction/03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 4: Manage Tokens
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    02 Ideation
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            02 Ideation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 5 · Prompt Engineering
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Lab 6 · Visual Reasoning
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 6 · Visual Reasoning
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-prompt" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Prompt
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-first-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. First Response
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-dont-generate-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Don't Generate Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-low-reasoning-effort" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Low Reasoning Effort
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-continued-conversation" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Continued Conversation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-switch-task-focus" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Switch Task Focus
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-homework-try-this" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Homework: Try this
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    03 Inference
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            03 Inference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-Inference/01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 7 · Code-First Prompting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-Inference/02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 8 · Advanced Usage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-Inference/03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Continue Learning
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    02 Homework
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            02 Homework
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../02-Homework/Implementation/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Implementation
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Implementation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02-Homework/Implementation/01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Application Patterns
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02-Homework/Implementation/02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 9 · Metaprompting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02-Homework/Implementation/03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 10 · Model Chaining
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../02-Homework/References/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    References
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            References
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-prompt" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Prompt
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-first-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. First Response
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-dont-generate-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Don't Generate Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-low-reasoning-effort" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Low Reasoning Effort
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-continued-conversation" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Continued Conversation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-switch-task-focus" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Switch Task Focus
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-homework-try-this" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Homework: Try this
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+  <h1>Lab 6 · Visual Reasoning</h1>
+
+<div class="admonition quote">
+<p class="admonition-title">BY THE END OF THIS SECTION YOU SHOULD HAVE</p>
+<ol>
+<li>Some intuition for the difference between visual and text reasoning problems</li>
+<li>Some experience using multimodal prompts for visual reasoning in Playground</li>
+<li>Some intuition for good visual reasoning problems and prompt engineering them</li>
+</ol>
+</div>
+<p>Visual Reasoning is when the model is not just analyzing the picture (object recognition), it is actively using it for reasoning. This is a fascinating new area for reasoning applications - so let's use this lab to explore a small example.</p>
+<div class="admonition info">
+<p class="admonition-title">REMINDER: These models are stochastic. Your response may not match the sample exactly</p>
+</div>
+<hr />
+<h2 id="1-prompt">1. Prompt<a class="headerlink" href="#1-prompt" title="Permanent link">&para;</a></h2>
+<p>Here is a good example of a visual reasoning challenge - a <strong>word jumble</strong>. The image come from  <a href="https://en.wikipedia.org/wiki/Jumble">this Wikipedia article</a>.</p>
+<ol>
+<li>Upload the image to the Playground.</li>
+<li>Use the prompt:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>&quot;Solve this&quot;
+</code></pre></div>
+<p><img alt="Image" src="../assets/01-prompt.png" /></p>
+<hr />
+<h2 id="2-first-response">2. First Response<a class="headerlink" href="#2-first-response" title="Permanent link">&para;</a></h2>
+<div class="admonition quote">
+<p class="admonition-title">HOW DID YOUR MODEL RESPOND?</p>
+</div>
+<p>Here's what we see in the sample response below:</p>
+<ol>
+<li>It got the answer right: <strong>No Chemistry</strong> </li>
+<li>Note that the model was configured for <strong>detailed</strong> response and showed its work</li>
+<li>The response took 544 tokens with <em>high</em> reasoning effort.</li>
+<li>It also recognized that the puzzle was humorous (cites the "punchline")</li>
+</ol>
+<p><img alt="" src="../assets/02-response.png" /></p>
+<h2 id="3-dont-generate-summary">3. Don't Generate Summary<a class="headerlink" href="#3-dont-generate-summary" title="Permanent link">&para;</a></h2>
+<div class="admonition quote">
+<p class="admonition-title">ITERATE ON THE PROMPT - NOTE YOUR OBSERVATIONS</p>
+</div>
+<ol>
+<li>Repeat (2) but set <em>generate summary</em> option to "none"?</li>
+<li>Observe what happens now. For example I noticed:<ol>
+<li>The response took 345 tokens with <em>high</em> reasoning effort.</li>
+<li>The output was shorter and less detailed than the previous one</li>
+</ol>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code>First you unscramble each word:
+
+YNAROC → CRAYON
+DISNM → MINDS
+NYNIT → TINNY
+ARHCEB → BREACH
+
+Then you take the letters in the circled positions of each (3 from CRAYON, 3 from MINDS, 2 from TINNY, 3 from BREACH) to get
+
+C Y O  M I S  T N  R E H
+
+Finally you anagram those eleven letters into the punny answer:
+
+NO CHEMISTRY
+</code></pre></div>
+<hr />
+<h2 id="4-low-reasoning-effort">4. Low Reasoning Effort<a class="headerlink" href="#4-low-reasoning-effort" title="Permanent link">&para;</a></h2>
+<div class="admonition quote">
+<p class="admonition-title">ITERATE ON THE PROMPT - NOTE YOUR OBSERVATIONS</p>
+</div>
+<ol>
+<li>Repeat (2) - and also set <em>reasoning effort</em> option to "low"?</li>
+<li>Some observations:<ul>
+<li>The answer was still correct - but took more (389) tokens</li>
+</ul>
+</li>
+</ol>
+<h2 id="5-continued-conversation">5. Continued Conversation<a class="headerlink" href="#5-continued-conversation" title="Permanent link">&para;</a></h2>
+<div class="admonition quote">
+<p class="admonition-title">ITERATE ON THE PROMPT - NOTE YOUR OBSERVATIONS</p>
+</div>
+<ol>
+<li>Let's see if the model understand the nuances of this puzzle.</li>
+<li>Set the reasoning effort to: high</li>
+<li>Set the generate summary to: yes</li>
+<li>
+<p>Try this prompt:</p>
+<div class="highlight"><pre><span></span><code>&quot;create a new puzzle like that one - and explain how you did it&quot;
+</code></pre></div>
+</li>
+<li>
+<p>Some observations:</p>
+<ol>
+<li>The response took  953 tokens with <em>high</em> reasoning effort.</li>
+<li>It not only created the puzzle and explained the reasoning, it understood the pattern and made sure there was a punny answer.</li>
+</ol>
+</li>
+</ol>
+<details class="success">
+<summary>SEE SAMPLE RESPONSE: Click to expand</summary>
+<p>Here’s a “break‑up pun” puzzle along the same lines:</p>
+<p>PUZZLE
+  Unscramble each row into an ordinary word. In the finished word, the letters in circled boxes are to be collected (in any order) to spell the two‑word punch‑line.</p>
+<p>O M L A R
+  □◯□◯◯
+  (unscrambles to ______ )</p>
+<p>P A R E S
+  ◯□◯□□
+  (unscrambles to ______ )</p>
+<p>A T P I N
+  ◯◯□□□
+  (unscrambles to ______ )</p>
+<p>C E O N
+  □□◯◯
+  (unscrambles to ______ )</p>
+<p>CARTOON CAPTION
+  “The geologist broke up with the astronomer because they needed <strong><em>_</em></strong><strong><em>_</em></strong>.”</p>
+<p>Print the 9 circled letters here:
+  □□ □□□□□</p>
+<p>SOLUTION SKETCH</p>
+<p>OMLAR → MORAL
+  circled letters (positions 1, 2, 3) → M O R
+  PARES → SPEAR
+  circled letters (positions 1, 3) → S E
+  ATPIN → PAINT
+  circled letters (positions 1, 2) → P A
+  CEON → ONCE
+  circled letters (positions 3, 4) → C E
+  Collected letters are M O R E S P A C E → “MORE SPACE.”</p>
+<p>So the finished caption reads:
+  “The geologist broke up with the astronomer because they needed MORE SPACE.”</p>
+<p>HOW I MADE IT</p>
+<p>Pick a short punny phrase (“MORE SPACE”) for the cartoon punch‑line.
+  List its letters (M,O,R,E,S,P,A,C,E) and decide how many circles to draw on each of four words (here 3+2+2+2 = 9).
+  Choose four everyday words that contain exactly the needed circled letters.
+  Scramble each word and mark which positions will be circled.
+  Lay out the puzzle with blanks, circles, and the cartoon clue so that solvers unscramble, extract the circled letters, then re‑scramble them into the final joke answer.</p>
+</details>
+<hr />
+<h2 id="6-switch-task-focus">6. Switch Task Focus<a class="headerlink" href="#6-switch-task-focus" title="Permanent link">&para;</a></h2>
+<div class="admonition quote">
+<p class="admonition-title">STAY IN CONVERSATION BUT SWITCH TASK - NOTE YOUR OBSERVATIONS</p>
+</div>
+<p>Let's keep the conversation history but use a different image type (webp) and task (calorie estimate). We'll use this image of <a href="https://publicdomainrecipes.com/lavacake/">a lava cake</a> from the public domain.</p>
+<ol>
+<li>Upload this <code>webp</code> image to the Playground (in the prompt console)</li>
+<li>
+<p>Try this prompt:</p>
+<div class="highlight"><pre><span></span><code>Can you estimate the calories in this?
+</code></pre></div>
+</li>
+<li>
+<p><strong>Did the model make the context switch to the new task?</strong> Some observations:</p>
+<ol>
+<li>The model was able to recognize the image and estimate the calories in it.</li>
+<li>It gave a detailed breakdown of ingredients and respective calorie counts.</li>
+<li><strong>Token Cost</strong>: 572</li>
+</ol>
+</li>
+</ol>
+<p><img alt="" src="../assets/lavacake.webp" /></p>
+<div class="admonition quote">
+<p class="admonition-title">Response</p>
+<div class="highlight"><pre><span></span><code>  Here’s a rough breakdown based on typical portion sizes:
+
+     • Chocolate “lava” cake (single serving, about 100–120 g): 350–450 kcal
+     • Vanilla ice cream (one generous scoop, ~½ cup): 130–180 kcal
+     • Berry sauce or coulis (2–3 Tbsp): 30–60 kcal
+     • Fresh strawberry slices (3–4 medium berries): 10–15 kcal
+
+     Total estimate: approximately 520–705 kcal
+
+     Depending on exact serving sizes, you’re likely looking at somewhere in the 550–750 kcal range for the entire plate
+</code></pre></div>
+</div>
+<h2 id="7-homework-try-this">7. Homework: Try this<a class="headerlink" href="#7-homework-try-this" title="Permanent link">&para;</a></h2>
+<div class="admonition quote">
+<p class="admonition-title">EXPLORE AT HOME: Iterate and build intuition for yourself.</p>
+</div>
+<p>Think of ways in which we can make the task more actionable for our needs.</p>
+<ol>
+<li><strong>Response Formatting</strong> - can we have it generate the information in form of a nutrition label?</li>
+<li><strong>Recipe Suggestion</strong> - can we have it generate a recipe just by looking at the picture?</li>
+<li><strong>Visual Reimagining</strong> - can we have it create a new image for the recipe reflecting our style?</li>
+</ol>
+<details class="info">
+<summary>SAMPLE RESPONSE: "Give me a recipe for this that matches the formats of online recipe websites. Provide ingredients prep-time cook-time and step by step instructions (Took 1108 tokens)"</summary>
+<p>Molten Chocolate Lava Cakes with Berry Coulis and Fresh Strawberries</p>
+<p>Yields: 4 servings
+  Prep Time: 20 minutes
+  Cook Time: 12 minutes
+  Total Time: 32 minutes</p>
+<p>INGREDIENTS
+  For the Lava Cakes
+  • 120 g (4 oz) dark chocolate (70% cocoa), chopped
+  • 100 g (3½ oz) unsalted butter, plus extra for greasing
+  • 2 large eggs
+  • 2 large egg yolks
+  • 50 g (¼ cup) caster (superfine) sugar
+  • 25 g (3 tbsp) plain (all‑purpose) flour
+  • Pinch of fine sea salt</p>
+<p>For the Berry Coulis
+  • 150 g (5 oz) mixed berries (fresh or frozen; e.g. raspberries, blueberries, blackberries)
+  • 2 tbsp granulated sugar
+  • 1 tbsp fresh lemon juice
+  • 1–2 tbsp water (as needed)</p>
+<p>To Serve
+  • 4 scoops high‑quality vanilla ice cream
+  • 4 large strawberries, hulled and sliced</p>
+<p>EQUIPMENT
+  • 4 × 6 oz (180 ml) ramekins or custard cups
+  • Baking tray
+  • Small saucepan or double‑boiler setup
+  • Whisk, spatula, sieve, and fine‑mesh strainer</p>
+<p>STEP‑BY‑STEP INSTRUCTIONS</p>
+<p>Preheat &amp; prepare ramekins
+  – Preheat the oven to 200 °C (400 °F).
+  – Generously butter each ramekin, then dust with a little sugar, tapping out any excess. Set ramekins on a baking tray.</p>
+<p>Melt chocolate &amp; butter
+  – In a heatproof bowl set over (but not touching) simmering water, combine chopped dark chocolate and butter.
+  – Stir occasionally until fully melted and smooth. Remove from heat and let cool for 2 minutes.</p>
+<p>Whisk eggs &amp; sugar
+  – In a separate bowl, whisk together whole eggs, yolks, sugar, and salt until pale, thick, and ribbon‑coating (about 2–3 minutes).</p>
+<p>Combine chocolate mixture
+  – Gently fold the melted chocolate/butter into the egg mixture using a rubber spatula. Mix until just combined.</p>
+<p>Fold in flour
+  – Sift the flour over the batter, then fold in lightly until no streaks of flour remain. Be careful not to overmix.</p>
+<p>Fill ramekins &amp; bake
+  – Divide batter evenly among the prepared ramekins.
+  – Bake on the center rack for 10–12 minutes, until the edges are set but the centers still jiggle slightly when shaken.</p>
+<p>Rest briefly
+  – Remove from oven and let rest for 1 minute. Run a small knife around the edge of each cake, then invert onto individual serving plates.</p>
+<p>Make the berry coulis
+  – In a small saucepan, combine berries, sugar, and lemon juice. Cook over medium heat until the fruit breaks down and releases its juices (3–5 minutes).
+  – Add water by the tablespoon if mixture seems too thick.
+  – Strain through a fine‑mesh sieve into a bowl, pressing on solids to extract as much sauce as possible. Discard seeds.</p>
+<p>Plate &amp; garnish
+  – Using the back of a spoon, swoosh about 2–3 tbsp of coulis in a circle on each plate.
+  – Place the warm lava cake in the center of the coulis swirl.
+  – Top each cake with a scoop of vanilla ice cream.
+  – Arrange sliced strawberries alongside or on top.</p>
+<p>Serve immediately
+  – The contrast of warm, gooey chocolate and cold ice cream is best enjoyed right away.</p>
+<p>TIPS
+  • To make ahead: Assemble batter in ramekins, cover tightly, and refrigerate up to 24 hours. Add 1–2 extra minutes to baking time if chilled.
+  • For an extra flourish: Dust with icing sugar or sprinkle a few fresh mint leaves.</p>
+</details>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../01/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Lab 5 · Prompt Engineering">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Lab 5 · Prompt Engineering
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../03-Inference/01/" class="md-footer__link md-footer__link--next" aria-label="Next: Lab 7 · Code-First Prompting">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Lab 7 · Code-First Prompting
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2025 Microsoft &nbsp;|&nbsp; <a href="https://go.microsoft.com/fwlink/?LinkId=521839">Privacy </a>&nbsp;|&nbsp; <a href="https://go.microsoft.com/fwlink/?LinkId=2259814">Consumer Health Privacy </a>&nbsp;|&nbsp; <a onclick="window.manageConsent();">Cookies </a>&nbsp;|&nbsp; <a href="https://go.microsoft.com/fwlink/?LinkID=206977">Terms of Use </a>&nbsp;|&nbsp; <a href="https://www.microsoft.com/trademarks">Trademarks </a>
+
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.expand", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.indexes", "navigation.top", "toc.follow", "navigation.footer", "content.code.copy", "content.tabs.link"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  </body>
+</html>
