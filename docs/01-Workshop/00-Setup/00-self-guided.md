@@ -2,7 +2,7 @@
 
 !!! quote "BY THE END OF THIS LAB YOU SHOULD HAVE"
 
-    1. Picked your path (Microsoft Build Attendee vs. Self-Guided Learner)
+    1. Set your tab preference (Microsoft Build Attendee vs. Self-Guided Learner)
     1. A pre-configured development environment in GitHub Codespaces
     1. An provsisoned Azure AI project in Azure AI Foundr
 
