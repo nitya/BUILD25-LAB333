@@ -20,11 +20,12 @@ Welcome to **Lab 333**! This is a 75-minute hands-on workshop session at Microso
 We will work on this lab within a GitHub Codespaces environment. 
 
 1. Visit ++https://github.com++ - log in with a **personal account**.
-2. Visit ++https://aka.ms/build25/lab333/prebuild++ - for lab repo.
-3. Click **Create codespace** - launches pre-built codespaces in tab.
-4. Keep the tab open and wait for the VS Code terminal to be active.
-5. Type ++mkdocs serve++ - select the browser option in pop-up.
-6. You should now see the lab instructions preview in the browser.
+1. Visit ++https://aka.ms/build25/lab333/prebuild++ - for lab repo.
+1. Click **Create codespace** - launches pre-built codespaces in tab.
+1. Keep the tab open and wait for the VS Code terminal to be active.
+1. 
+1. Type ++mkdocs serve &++ - select the browser option in pop-up.
+1. You should now see the lab instructions preview in the browser.
 
 _Wait for instructor guidance to continue_.
 
