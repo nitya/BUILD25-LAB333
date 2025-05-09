@@ -16,7 +16,7 @@
 		}, 
 		"codespaces": {
 			"openFiles": [
-			"docs/index.md"
+				""
 			]
 		}
 	},
@@ -24,12 +24,11 @@
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	"forwardPorts": [8000],
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "pip install -r requirements.txt && nohup mkdocs serve &",
+	"postCreateCommand": "pip install -r requirements.txt && mkdocs serve",
 	"features": {
 		"ghcr.io/devcontainers/features/python:1": {},
-		"ghcr.io/devcontainers/features/azure-cli:1": {},
-	},
-
+		"ghcr.io/devcontainers/features/azure-cli:1": {}
+	}
 
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "root"

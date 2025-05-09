@@ -2,94 +2,90 @@
 
 !!! quote "BY THE END OF THIS LAB YOU SHOULD HAVE"
 
-    1. A personal copy of the workshop repo in your GitHub profile
+    1. Picked your path (Microsoft Build Attendee vs. Self-Guided Learner)
     1. A pre-configured development environment in GitHub Codespaces
-    1. An provsisoned Azure AI project in Azure AI Foundry
+    1. An provsisoned Azure AI project in Azure AI Foundr
 
 ---
 
-## 1. Launch GitHub Codespaces
+## 1. Before You Begin
 
-This repository is configured with a `devcontainer.json` that can be activated in GitHub Codespaces (cloud) or Docker Desktop (local device) to give you a prebuild development environment with least effort. **We recommend using GitHub Codespaces for this lab.**
+This lab is setup for use by both in-venue attendees (75-minute session) and at-home learners (self-paced). The setup instructions differ based on this context. **Pick the path that fits your current learning context** - this is automatically enforced site-wide.
 
-1. Log into your personal GitHub profile
-1. Fork this repo to get a personal copy in your profile.
-1. Open the forked repo in your browser, click on "Code" dropdown
-1. Select the `Codespaces` tab and create a new codespace.
 
-**This will open a new tab with a VS Code editor in the browser.** Wait till the editor is fully loaded and the Visual Studio Code terminal is active.
+=== "Microsoft Build Attendee"
 
----
+    !!! info "I am currently a Lab 333 attendee **AT MICROSOFT BUILD 2025** (75 minutes)"
 
-## 2. Verify Azure CLI Exists
+=== "Self-Guided Learner"
 
-1. The `devcontainer` should have the Azure CLI pre-installed. Verify this now: 
-
-    ``` title="" linenums="0"
-    az version
-    ```
-
-1. You should see something like: 
-
-    ``` title="" linenums="0"
-    {
-    "azure-cli": "2.71.0",
-    "azure-cli-core": "2.71.0",
-    "azure-cli-telemetry": "1.1.0",
-    "extensions": {}
-    }
-    ```
+    !!! quote "I am working through the lab **AT HOME** with my Azure subscription (self-paced)"
 
 ---
 
-## 3. Authenticate with Azure
+## 1. Local Environment
 
-1. Use the Azure CLI to log into your Azure account using this command.
-
-    ``` title="" linenums="0"
-    az login --use-device-code
-    ```
-
-1. This starts a browser-based authentication flow. Follow the instructions in the terminal to complete the login process. Then return to the VS Code terminal. **You are now connected to your Azure backend from the codespace**.
-
+You are currently using a _prebuild_ version of this repository on GitHub Codespaces. This development environment is preconfigured with all the tools you need to complete the lab. Let's use these tools to configure the local environment to work with Azure, next!
 
 ---
 
-!!! warning "IN-VENUE LAB ATTENDEES: You can skip the deploy step and go directly to [**Validate Setup**](./../00-Setup/01-explore-project.md):"
+## 2. Azure Infrastructure
 
-    1. In-venue attendees - you get a pre-provisioned Azure subscription by default.
-    1. At-home learners - you can provision these resources **using your own Azure subscription**
+In this step, we'll connect our local development environment (GitHub Codespaces) to a provisioned Azure AI Foundry project.
 
-## 4. Deploy with Azure CLI
 
-1. Next, use the Azure CLI to create a new resource group for the lab. This sets up a resource group called `Lab333` in the `EastUS 2` region.
+=== "Microsoft Build Attendee"
 
-    ``` title="" linenums="0"
-    az group create --name Lab333 --location 'EastUS 2'
-    ```
+    !!! info "You will be using the pre-provisioned Skillable Azure Credentials in this section"
 
-1. You should see something like this. **Your resource group is ready to be provisioned**.
+    1. Visit the Skillable VM tab in your browser - verify you see Azure credentials
+    1. Return to the Codespaces tab - open the VS Code terminal and run this command
 
-    ``` title="" linenums="0"
-    {
-        "id": "/subscriptions/XXXXXX/resourceGroups/Lab333",
-        "location": "eastus2",
-        "managedBy": null,
-        "name": "Lab333",
-        "properties": {
-            "provisioningState": "Succeeded"
-        },
-        "tags": null,
-        "type": "Microsoft.Resources/resourceGroups"
-    }
-    ```
+        ``` title="" linenums="0"
+        az login --use-device-code
+        ```
+    1. This starts a browser-based authentication flow. Follow the instructions in the terminal to complete this process. **When logging into Azure, use the Skillable credentials above.**
+    1. Return to the VS Code terminal when done. _Congratulations! You are logged into Azure!_.
 
-1. Now, use this command to deploy the defined template to that resource group. 
+    You don't need to deploy any infrastructure - **this is already done for you!**
 
-    ``` title="" linenums="0"
-    az deployment group create --name reasoning-template --resource-group Lab333 --template-file infra/template.json
-    ```
+=== "Self-Guided Learner"
 
-1. You will be prompted for a **uniqueSuffix** - provide a random 4-digit number. This will reduce naming conflicts with soft-deleted resources from previous runs, that aren't yet purged.
+    !!! quote "You will need to use your personal Azure Subscription for this step"
 
-1. The script takes a few minutes to run. Next, we'll validate the setup.
+    1. Open the VS Code terminal and run this command
+
+        ``` title="" linenums="0"
+        az login --use-device-code
+        ```
+    1. This starts a browser-based authentication flow. Follow the instructions in the terminal to complete this process. *When prompted to log in, use your own Azure credentials.*
+    1. Return to the VS Code terminal when done. *You are logged into Azure!*
+    1. Next, run this command.  *You created a resource group called Lab333 in region EastUS 2*
+        ``` title="" linenums="0"
+        az group create --name Lab333 --location 'EastUS 2'
+        ```
+    1. Wait till that completes. *Your resource group is now ready to be provisioned*.
+
+        ``` title="" linenums="0"
+        {
+            "id": "/subscriptions/XXXXXX/resourceGroups/Lab333",
+            "location": "eastus2",
+            "managedBy": null,
+            "name": "Lab333",
+            "properties": {
+                "provisioningState": "Succeeded"
+            },
+            "tags": null,
+            "type": "Microsoft.Resources/resourceGroups"
+        }
+        ```
+
+    1. Run this command to deploy resources to that resource group. _This takes a few minutes_.
+
+        ``` title="" linenums="0"
+        az deployment group create --name reasoning-template --resource-group Lab333 --template-file infra/template.json
+        ```
+
+    1. You will be prompted for a **uniqueSuffix** - provide a random 4-digit number. _This will reduce naming conflicts with soft-deleted resources from previous runs, that aren't yet purged._
+
+    1. The process takes a few minutes to complete. **Congratulations! Your infra is ready!**
