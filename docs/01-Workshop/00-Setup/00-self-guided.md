@@ -45,7 +45,7 @@ In this step, we'll connect our local development environment (GitHub Codespaces
         az login --use-device-code
         ```
     1. This starts a browser-based authentication flow. Follow the instructions in the terminal to complete this process. **When logging into Azure, use the Skillable credentials above.**
-    1. Return to the VS Code terminal when done. _Congratulations! You are logged into Azure!_.
+    1. Return to the VS Code terminal when done and press `Enter` if asked about subscription choice. _Congratulations! You are logged into Azure!_.
 
     You don't need to deploy any infrastructure - **this is already done for you!**
 
@@ -59,7 +59,8 @@ In this step, we'll connect our local development environment (GitHub Codespaces
         az login --use-device-code
         ```
     1. This starts a browser-based authentication flow. Follow the instructions in the terminal to complete this process. *When prompted to log in, use your own Azure credentials.*
-    1. Return to the VS Code terminal when done. *You are logged into Azure!*
+    1. Return to the VS Code terminal when done. 
+    1. Select the subscription of your choice, or press `Enter` for the default that is offered. *You are logged into Azure!*
     1. Next, run this command.  *You created a resource group called Lab333 in region EastUS 2*
         ``` title="" linenums="0"
         az group create --name Lab333 --location 'EastUS 2'
