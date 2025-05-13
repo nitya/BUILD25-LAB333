@@ -43,3 +43,4 @@ We welcome feedback to help us improve the learning experience.
 | Resources          | Links                             | Description        |
 |:-------------------|:----------------------------------|:-------------------|
 | Build session page | https://build.microsoft.com/sessions/LAB333 | Event session page with downloadable recording, slides, resources, and speaker bio |
+|Microsoft Learn|https://aka.ms/build25/plan/ai_agents_apps__data|Official Collection or Plan with skilling resources to learn at your own pace|
