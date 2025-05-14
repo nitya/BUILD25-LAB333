@@ -96,7 +96,6 @@ The **Azure AI Foundry portal** is a specialized interface for working with Azur
     - Click on one of the models in the list - e.g., click `o4-mini`
     - You see the details page below (with code samples & config info)
     - You see a metrics tab - this has stats on token usage, request rate etc.
-    - Click the link under **Model name** to visit the model card.
 
         ![Azure Project](../assets/00-setup-model-card.png)
 
@@ -131,13 +130,13 @@ The **Model Playground** is a low-code interface for exploring and testing model
 1. We have 2 reasoning models and 1 general-purpose model available for testing.
 
     - Let's explore the `gpt-4o-mini` model (we'll use reasoning models later)
-    - Select a default prompt - e.g., I selected the **Poetry generation** prompt
+    - Select a *sample prompt* from the buttons within the chatbox - e.g., I selected the **Poetry generation** prompt
 
         ```title="" linenums="0"
         Compose a poem about the beauty of nature in autumn
         ```
 
-    - Click the arrow - note the response and the token usage (below the prompt box)
+    - Click the Send Button ![Send Button](../assets/00-setup-foundry-chatsendbutton.png) (or press Enter from within the chatbox) - note the response and the token usage (below the prompt box)
     - Expand the **Parameters** section - vary settings to assess response quality
 
         ![Azure Project](../assets/00-setup-prompt-gpt.png)
@@ -158,7 +157,7 @@ The **Model Playground** is a low-code interface for exploring and testing model
 Ideation is good for assessing models for your project. But once you've made a decision, you need to move to a code-first approach for development. Let's set ourselves up now so we can explore code-first development later.
 
 
-1. Open the VS Code Terminal. Make sure you are at the root folder
+1. Return to the Codespaces tab and open the VS Code Terminal. Make sure you are at the root folder
 1. Copy the `.env.sample` file to a `.env`
 
     ``` title="" linenums="0"
@@ -167,7 +166,7 @@ Ideation is good for assessing models for your project. But once you've made a d
 
 1. Return to the Azure AI Foundry portal and click on **Overview** in sidebar
 
-1. Copy over the values from that page, to update the `.env` file
+1. Copy over the values for the API Key and Azure OpenAI endpoint from the **Included Capabilities** section of the page, to update the `.env` file
 
     - `AZURE_OPENAI_KEY` - set the value from the `API Key` panel
     - `AZURE_OPENAI_ENDPOINT` - set the value from the `Azure OpenAI Service` capability
