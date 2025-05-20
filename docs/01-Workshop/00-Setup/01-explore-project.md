@@ -59,17 +59,21 @@ Let's verify that the resource group was provisioned correctly. By default, the 
 
 ## 3. View Azure AI Project
 
+Let's explore and get familiar with the resource we will be focusing on for this lab. 
+
+1. Click on the Azure AI Project resource.
+
+    ![Azure Portal](../assets/00-setup-azure-portal-prjselect.png)
+
+2. Click on the button that reads **Launch Studio**
+
+    ![Azure Portal launch to foundry](../assets/00-setup-azure-portal-launchstudio.png)
+
+3. You will be brought to the **Azure AI Foundry portal**.
+
 The **Azure AI Foundry portal** is a specialized interface for working with Azure AI Foundry projects. It provides a UI-based (low-code) way to interact with your Azure AI applications. 
 
 **Let's take a quick tour of the portal to get familiar with features**.
-
-1. Navigate to [this Azure AI Foundry portal link](https://ai.azure.com) in a new browser tab.
-    - The landing page lists your active Azure AI Foundry projects.
-    - You should see at least one project listed now, as shown.
-
-        ![Azure Foundry](../assets//00-setup-foundry-portal.png)
-
-1. Click the listed project to visit the project Overview page.
 
     - This page gives you all configuration information needed for code-first access.
     - The sidebar also shows you UI-based tools & services for working with the project.
