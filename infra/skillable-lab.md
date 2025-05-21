@@ -24,7 +24,7 @@ We will work on this lab within a GitHub Codespaces environment.
 1. Click **Create codespace** - launches pre-built codespaces in tab.
 1. Keep the tab open and wait for the VS Code terminal to be active.
 1. 
-1. Type ++mkdocs serve &++ - select the browser option in pop-up.
+1. Type ++mkdocs serve > /dev/null 2>&1 &++ - select the browser option in pop-up.
 1. You should now see the lab instructions preview in the browser.
 
 _Wait for instructor guidance to continue_.

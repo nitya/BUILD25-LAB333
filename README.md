@@ -5,7 +5,7 @@
 # LAB333: Evaluate Reasoning Models for Your Generative AI Solutions
 
 > [!IMPORTANT]  
-> This repository contains training materials for a hands-on workshop on Reasoning models. It provides an overview of reasoning models (what they are, how they work, when to use them) and illustrates tradeoffs and best practices for usage with examples.
+> This repository contains training materials for a hands-on workshop on Reasoning models. It provides an overview of reasoning models (what they are, how they work, when to use them) and illustrates tradeoffs and best practices for usage with examples. You can complete this in self-guided mode at home - if you have questions or need help, post messages to [this discussion thread](https://aka.ms/discuss/build25-lab333) - we'll monitor it regularly and respond within 24 hours.
 
 ## Workshop Overview
 
@@ -27,7 +27,7 @@ This workshop is designed to jumpstart your journey into understanding, and work
 
 1. Fork the repo to your personal GitHub account to get your own copy
 1. Launch GitHub Codespaces and work with a VS Code editor in the browser
-1. Open a VS Code terminal when ready, run ```mkdocs serve```
+1. Open a VS Code terminal when ready, run ```mkdocs serve > /dev/null 2>&1 &```
 1. Work through the instructions in GitHub Codespaces.
 
 ## Questions or Comments?
