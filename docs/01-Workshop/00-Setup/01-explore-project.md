@@ -75,10 +75,10 @@ The **Azure AI Foundry portal** is a specialized interface for working with Azur
 
 **Let's take a quick tour of the portal to get familiar with features**.
 
-    - This page gives you all configuration information needed for code-first access.
-    - The sidebar also shows you UI-based tools & services for working with the project.
+- This page gives you all configuration information needed for code-first access.
+- The sidebar also shows you UI-based tools & services for working with the project.
 
-        ![Azure Project](../assets//00-setup-foundry-project.png)
+    ![Azure Project](../assets//00-setup-foundry-project.png)
 
 ---
 
